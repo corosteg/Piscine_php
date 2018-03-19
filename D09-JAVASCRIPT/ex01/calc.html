@@ -1,0 +1,116 @@
+<html>
+	<head><title>calc</title></head>
+	<body onload="alert_titi()">
+		<div>
+			<input type="text" id="input" style="display:inline-block">
+			<select id="operador">
+				<option value="more">+</option>
+				<option value="subtraction">-</option>
+				<option value="multiply">*</option>
+				<option value="divide">/</option>
+				<option value="modulo">%</option>
+			</select>
+			<input type="text" id="input2" style="display:inline-block">
+		</div>
+		<div>
+			<input type="submit" value="Try me" id="result" style="display:inline-block" onclick="calc()">
+		</div>
+		<script>
+			function alert_titi()
+			{
+				setInterval(function(){alert("Please, use me...");}, 30000);
+			}
+			function is_int(value)
+			{
+				if((parseFloat(value) == parseInt(value)) && !isNaN(value))
+					return true;
+				else
+					return false;
+			}
+			function calc()
+			{
+				var nb1 = document.getElementById("input").value;
+				var nb2 = document.getElementById("input2").value;
+				var ope = document.getElementById("operador").value;
+				if(isNaN(nb1) == true)
+				{
+					alert('Error :(');
+					return;
+				}
+				if(isNaN(nb2) == true)
+				{
+					alert('Error :(');
+					return;
+				}
+				if (!(is_int(nb1)))
+				{
+					alert('Error :(');
+					return;
+				}
+				if (!(is_int(nb2)))
+				{
+					alert('Error :(');
+					return;
+				}
+				nb1 = parseInt(nb1);
+				nb2 = parseInt(nb2);
+				if (!(Number.isInteger(nb1)) || nb1 < 0)
+				{
+					return;
+				}
+				if (!(Number.isInteger(nb2)) || nb2 < 0)
+				{
+					alert('Error :(');
+					return;
+				}
+				if (ope == "more")
+				{
+					var result = nb1 + nb2;
+					alert(result);
+					console.log(result);
+					return;
+				}
+				if (ope == "subtraction")
+				{
+					var result = nb1 - nb2;
+					alert(result);
+					console.log(result);
+					return;
+				}
+				if (ope == "multiply")
+				{
+					var result = nb1 * nb2;
+					alert(result);
+					console.log(result);
+					return;
+				}
+				if (ope == "divide")
+				{
+					if (nb1 == 0 || nb2 == 0)
+					{
+						console.log("It’s over 9000!");
+						alert("It’s over 9000!");
+						return;
+					}
+					var result = nb1 / nb2;
+					alert(result);
+					console.log(result);
+					return;
+				}
+				if (ope == "modulo")
+				{
+					if (nb1 == 0 || nb2 == 0)
+					{
+						console.log("It’s over 9000!");
+						alert("It’s over 9000!");
+						return;
+					}
+					var result = nb1 % nb2;
+					alert(result);
+					console.log(result);
+					return;
+				}
+			}
+		</script>
+	</body>
+</html>
